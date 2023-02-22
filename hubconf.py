@@ -190,9 +190,3 @@ with torch.no_grad():
     pred = model(x)
     predicted, actual = classes[pred[0].argmax(0)], classes[y]
     print(f'Predicted: "{predicted}", Actual: "{actual}"')
-
-git remote add origin https://github.com/piyushhingu/hubconf.py.git
-git branch -M main
-git push -u origin main
-
-!pip install git
