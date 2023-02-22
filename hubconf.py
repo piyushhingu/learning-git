@@ -17,66 +17,19 @@ from torchvision import datasets
 from torchvision.transforms import ToTensor
 
 # Download training data from open datasets.
-training_data = datasets.FashionMNIST(
+def data_load():
+  training_data = datasets.FashionMNIST(
     root="data",
     train=True,
     download=True,
     transform=ToTensor(),
-)
+  )
+  batch_size = 64
 
-# Download test data from open datasets.
-test_data = datasets.FashionMNIST(
-    root="data",
-    train=False,
-    download=True,
-    transform=ToTensor(),
-)
-
-# # classes = [
-# #     "T-shirt/top",#0
-# #     "Trouser",    #1
-# #     "Pullover",   #1
-# #     "Dress",      #0
-# #     "Coat" ,      #0
-# #     "Sandal",     #2
-# #     "Shirt",      #0
-# #     "Sneaker",    #2
-# #     "Bag",        #3
-# #     "Ankle boot", #2
-# # ]
-# # #0-Upper
-# # #1-Lower
-# # #2-Feet   
-# # #3-Bag
-
-# def NewData(dataset):
-#     new_dataset = []
-#     for l in range(len(dataset)):
-#       i = dataset[l][1];
-#       if i==0 or i==3 or i==4 or i==6:
-#         i_new = 0
-#       elif i==1 or i==2:
-#         i_new = 1;
-#       elif i==5 or i==7 or i==9:
-#         i_new = 2
-#       else:
-#         i_new = 3
-#       tuple = (dataset[0][0],i_new)
-#       new_dataset.append(tuple)
-#     return new_dataset
-# new_training_data = NewData(training_data)
-# new_test_data = NewData(test_data)
-
-batch_size = 64
-
-# Create data loaders.
-train_dataloader = DataLoader(training_data, batch_size=batch_size)
-test_dataloader = DataLoader(test_data, batch_size=batch_size)
-
-for X, y in test_dataloader:
-    print(f"Shape of X [N, C, H, W]: {X.shape}")
-    print(f"Shape of y: {y.shape} {y.dtype}")
-    break
+  # Create data loaders.
+  train_dataloader = DataLoader(training_data, batch_size=batch_size)
+  test_dataloader = DataLoader(test_data, batch_size=batch_size)
+  return train_dataloader,test_dataloader;
 
 """--------------
 
@@ -190,9 +143,3 @@ with torch.no_grad():
     pred = model(x)
     predicted, actual = classes[pred[0].argmax(0)], classes[y]
     print(f'Predicted: "{predicted}", Actual: "{actual}"')
-
-git remote add origin https://github.com/piyushhingu/hubconf.py.git
-git branch -M main
-git push -u origin main
-
-!pip install git
