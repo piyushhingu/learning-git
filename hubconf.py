@@ -136,6 +136,8 @@ classes = [
     "Bag",
     "Ankle boot",
 ]
+
+
 model.eval()
 x, y = test_data[0][0], test_data[0][1]
 with torch.no_grad():
