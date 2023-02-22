@@ -29,7 +29,7 @@ def data_load():
   # Create data loaders.
   train_dataloader = DataLoader(training_data, batch_size=batch_size)
   test_dataloader = DataLoader(test_data, batch_size=batch_size)
-  return train_dataloader,test_dataloader;
+  return train_dataloader,test_dataloader
 
 """--------------
 
